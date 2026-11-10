@@ -185,7 +185,7 @@ footer.foot b{color:var(--ink);font-weight:500}
   <p class="kicker">Indoor air biohardening · evidence scan · November 2026</p>
   <p class="kicker" style="letter-spacing:0;text-transform:none;font-size:12.5px;margin-bottom:18px">Natalie Chen, Ph.D. · <a href="https://benchpressed.substack.com/" target="_blank" rel="noopener" style="color:var(--mute)">Bench Pressed</a></p>
   <h1>What we still don't know about disinfecting indoor air</h1>
-  <p class="standfirst">Far-UVC and glycol vapor both work on something. Anyone deciding whether to install them needs to know <strong>which organism, at what dose, in which rooms, and at what cost to the people breathing in it</strong>. This map codes every study found in this scan by target, setting, model system and endpoint. The filled cells are what has been measured. The dashed cells are the experiments still to run.</p>
+  <p class="standfirst">Far-UVC and glycol vapor both work on something. Anyone deciding whether to install them needs to know <strong>which organism, at what dose, in which rooms, and at what cost to the people breathing in it</strong>. This map codes what I found by target, setting, model system and endpoint. Darker cells have more evidence behind them. A pale cell with a dash means I found nothing.</p>
   <div class="tally" id="tally"></div>
 </header>
 
@@ -260,8 +260,8 @@ footer.foot b{color:var(--ink);font-weight:500}
 </section>
 
 <footer class="foot">
-  <p><b>How to read an empty cell.</b> A dashed cell means this scan found no study, not that none exists. The scan covered indexed literature reachable by search in November 2026 and is weighted toward English-language work and toward papers that name their organism and setting in the abstract. Treat every hole as a lead to check, not a finding.</p>
-  <p><b>Density levels</b> are a judgement call, not a count. Level 4 means several independent groups with consistent results. Level 1 means one study, an indirect measurement, or evidence borrowed from a different exposure regime. Where a cell carries a caveat flag, the flag is doing more work than the color.</p>
+  <p><b>How to read an empty cell.</b> An empty cell means my search found nothing. It does not mean no study exists. The scan covered indexed literature reachable by search in November 2026 and is weighted toward English-language work and toward papers that name their organism and setting in the abstract. Treat every empty cell as a lead to check.</p>
+  <p><b>Shading</b> is my own judgement of how settled a cell is, not a count of papers. Level 4 means several independent groups with consistent results. Level 1 means one study, an indirect measurement, or evidence borrowed from a different exposure regime. Where a cell carries a caveat flag, the flag is doing more work than the color.</p>
   <p><b>Scope.</b> Efficacy columns escalate in realism, so a filled cell on the left says nothing about the one on its right. Far-UVC safety is split by tissue because the skin argument and the eye argument rest on different penetration depths and have very different amounts of human data behind them.</p>
 </footer>
 
@@ -339,135 +339,135 @@ const GRIDS = {
   "g-uv-eff":{detail:"d-uv-eff",rows:["Enveloped virus","Non-enveloped virus","Vegetative bacteria","Bacterial spores","Fungi","Mycobacteria"],
     cols:["Suspension / surface","Benchtop aerosol","Room-scale chamber","Occupied real room","Human infection outcome"],
     cells:{
-      "0,0":{l:3,s:["kita21","narita20","taylor20"],r:"Dried-droplet and plate work on SARS-CoV-2, influenza A and a herpesvirus. Note that Kitagawa's RNA copy number did not fall, so a PCR-based readout would have reported no effect at all."},
-      "0,1":{l:4,s:["welch18","buon20","welch22","cov25"],r:"The best-covered cell in the whole map. Four studies, consistent low-dose susceptibility, and now a dosimetry correction that doubled the estimate.",fl:["only one study varies humidity"]},
-      "0,2":{l:0,s:[],r:"No room-scale chamber study in this scan used an enveloped virus. Room-scale work used bacteria; the enveloped-virus work stayed on the benchtop. The jump from a 280 mm exposure volume to a 32 m³ room has only ever been made with a different organism."},
-      "0,3":{l:0,s:[],r:"Nothing. The one occupied-room demonstration used a non-enveloped surrogate."},
-      "0,4":{l:0,s:["privii","dk26"],r:"Two trials running, neither reporting efficacy against a named enveloped virus yet. The PRiVII protocol states that clinical efficacy remains unproven.",fl:["trials ongoing"]},
-      "1,0":{l:2,s:["narita20"],r:"Feline calicivirus in the breadth study. Non-enveloped viruses are the harder target and the thinner column throughout."},
-      "1,1":{l:2,s:["buon24"],r:"Murine norovirus benchtop curves, run as the control arm for the occupied-room work and found somewhat less sensitive than influenza A or OC43."},
-      "1,2":{l:0,s:[],r:"Empty, same as the enveloped row. No room-scale chamber study used a virus of any kind."},
-      "1,3":{l:3,s:["buon24"],r:"The single strongest real-world result in far-UVC: 99.8% reduction of airborne infectious MNV in an occupied animal-facility room, with no measurable ozone or particulate change."},
-      "1,4":{l:0,s:[],r:"Nothing."},
-      "2,0":{l:4,s:["narita20","taylor20","buon17","bang25"],r:"Dense. Multiple species, multiple groups, consistent with or better than 254 nm, plus residential surface work."},
-      "2,1":{l:1,s:[],r:"Surprisingly thin given how much surface and room-scale bacterial work exists. Benchtop aerosol chambers were built for the virus studies and mostly stayed there.",fl:["inferred from room-scale work"]},
-      "2,2":{l:4,s:["eadie22","hiwar25"],r:"Two independent room-scale datasets across three ventilation rates, both with equivalent-air-change figures that building engineers can actually use."},
-      "2,3":{l:2,s:["kousha24"],r:"One environmental count in a simulated office: 52% fewer bacteria and fungi. A room-air measurement, not a controlled challenge."},
-      "2,4":{l:0,s:["privii","dk26"],r:"The Danish trial measures hospital-treated infections and antibiotic prescriptions, which would speak to this cell when it reports.",fl:["trials ongoing"]},
-      "3,0":{l:4,s:["taylor20","narita20"],r:"Well characterized, and the one place 222 nm clearly beats 254 nm. Spores of B. subtilis, B. cereus, B. thuringiensis and C. difficile all die at lower fluence."},
-      "3,1":{l:0,s:[],r:"As far as my research goes, nobody has tested aerosolized spores against far-UVC. Spores are the resistant end of the range and the worst case for any pathogen-agnostic claim, and the aerosol dose-response does not exist.",fill:1},
-      "3,2":{l:0,s:[],r:"Nothing at room scale either."},
-      "3,3":{l:0,s:[],r:"Nothing."},
-      "3,4":{l:0,s:[],r:"Nothing."},
-      "4,0":{l:3,s:["narita20"],r:"Candida albicans, Aspergillus niger and Trichophyton rubrum, hyphae and spores. This is where 222 nm underperforms 254 nm, which is worth knowing before anyone claims the technology is organism-agnostic."},
-      "4,1":{l:0,s:[],r:"Nothing airborne."},
-      "4,2":{l:0,s:[],r:"Nothing."},
-      "4,3":{l:1,s:["kousha24"],r:"Folded into the combined bacteria-and-fungi count in the simulated office. Not separable."},
-      "4,4":{l:0,s:[],r:"Nothing."},
-      "5,0":{l:0,s:[],r:"Tuberculosis appears in the motivation of nearly every far-UVC paper in this scan and in none of their methods. No mycobacterial data at any scale was found here."},
-      "5,1":{l:0,s:[],r:"Nothing."},"5,2":{l:0,s:[],r:"Nothing."},"5,3":{l:0,s:[],r:"Nothing."},"5,4":{l:0,s:[],r:"Nothing."}
+      "0,0":{l:3,s:["kita21","narita20","taylor20"],r:"Dried-droplet and plate work on SARS-CoV-2, influenza A and a herpesvirus. Kitagawa's RNA copy number did not fall after irradiation, so a PCR readout would have shown no effect."},
+      "0,1":{l:4,s:["welch18","buon20","welch22","cov25"],r:"Four studies across H1N1, HCoV-229E, OC43 and SARS-CoV-2, plus a 2022 dosimetry correction that doubled the low-dose susceptibility estimate.",fl:["only one study varies humidity"]},
+      "0,2":{l:0,s:[],r:"Room-scale work used bacteria, and the enveloped-virus work stayed on the benchtop."},
+      "0,3":{l:0,s:[],r:""},
+      "0,4":{l:0,s:["privii","dk26"],r:"No result yet. Two randomized trials are running in long-term care.",fl:["trials ongoing"]},
+      "1,0":{l:2,s:["narita20"],r:"Feline calicivirus, in the breadth study."},
+      "1,1":{l:2,s:["buon24"],r:"Murine norovirus benchtop curves, run alongside the occupied-room work and somewhat less sensitive than influenza A or OC43."},
+      "1,2":{l:0,s:[],r:""},
+      "1,3":{l:3,s:["buon24"],r:"99.8% reduction of airborne infectious murine norovirus in an occupied animal-facility room, with no measurable change in ozone or particulates."},
+      "1,4":{l:0,s:[],r:""},
+      "2,0":{l:4,s:["narita20","taylor20","buon17","bang25"],r:"Multiple species across several groups, comparable to or better than 254 nm, plus residential surface work."},
+      "2,1":{l:1,s:[],r:"No direct aerosol study found. The benchtop chambers in this scan were built for the virus work.",fl:["inferred from room-scale work"]},
+      "2,2":{l:4,s:["eadie22","hiwar25"],r:"Two room-scale datasets across three ventilation rates, both reporting equivalent air changes."},
+      "2,3":{l:2,s:["kousha24"],r:"One environmental count in a simulated office, 52% fewer bacteria and fungi. A room-air measurement rather than a controlled challenge."},
+      "2,4":{l:0,s:["privii","dk26"],r:"No result yet. The Danish trial measures hospital-treated infections and antibiotic prescriptions.",fl:["trials ongoing"]},
+      "3,0":{l:4,s:["taylor20","narita20"],r:"Spores of B. subtilis, B. cereus, B. thuringiensis and C. difficile, killed at lower fluence than 254 nm."},
+      "3,1":{l:0,s:[],r:"",fill:1},
+      "3,2":{l:0,s:[],r:""},
+      "3,3":{l:0,s:[],r:""},
+      "3,4":{l:0,s:[],r:""},
+      "4,0":{l:3,s:["narita20"],r:"Candida albicans, Aspergillus niger and Trichophyton rubrum, hyphae and spores. 222 nm came out weaker than 254 nm here."},
+      "4,1":{l:0,s:[],r:""},
+      "4,2":{l:0,s:[],r:""},
+      "4,3":{l:1,s:["kousha24"],r:"Bundled into the combined bacteria and fungi count in the simulated office, so not separable."},
+      "4,4":{l:0,s:[],r:""},
+      "5,0":{l:0,s:[],r:"Tuberculosis appears in the motivation of many far-UVC papers in this scan and in none of their methods."},
+      "5,1":{l:0,s:[],r:""},"5,2":{l:0,s:[],r:""},"5,3":{l:0,s:[],r:""},"5,4":{l:0,s:[],r:""}
     }},
 
   "g-uv-saf":{detail:"d-uv-saf",rows:["2D cell culture","3D reconstructed tissue","Ex vivo human tissue","Animal, acute","Animal, chronic (66 wk)","Human volunteer, acute","Human, chronic or in-situ"],
     cols:["Skin — DNA damage","Skin — pathology","Eye — DNA damage","Eye — function"],
     cells:{
-      "0,0":{l:1,s:[],r:"Monolayer keratinocyte work is largely absent, and for a reason: the whole safety argument rests on the stratum corneum absorbing the photons, which a monolayer does not have. A 2D result here would overstate damage by design."},
+      "0,0":{l:1,s:[],r:"Little monolayer keratinocyte work found. The skin safety argument rests on the stratum corneum, which a monolayer does not have."},
       "0,1":{l:0,s:[],r:"Not applicable in a monolayer."},
-      "0,2":{l:0,s:[],r:"No 2D corneal epithelial monolayer study was found. The argument that a bare monolayer with no tear film overstates ocular damage is stated in the literature and has not been measured against a 3D model at matched dose.",fill:1},
-      "0,3":{l:0,s:[],r:"Barrier and functional endpoints in 2D corneal culture: nothing found."},
-      "1,0":{l:4,s:["buon17","welchwl","kamen22","hicker21"],r:"Four studies, one wavelength sweep, and a filtering result that explains the disagreements. The strongest cell in far-UVC safety."},
-      "1,1":{l:0,s:[],r:"Carcinogenic endpoints need a whole animal; reconstructs cannot answer this."},
-      "1,2":{l:2,s:["zam25"],r:"Reconstructed human corneal epithelium at 79 µm against a real human epithelium at 26 µm. The model is three times too thick, and the paper says so."},
-      "1,3":{l:0,s:[],r:"No functional endpoints, TEER or barrier integrity, in a 3D corneal model after far-UVC."},
-      "2,0":{l:3,s:["buonskin","hicker21"],r:"Live human biopsies across ages, sexes and phototypes, plus an ex vivo full-thickness model held at tension. Damage minor and superficial, worst in low-melanin skin."},
+      "0,2":{l:0,s:[],r:"",fill:1},
+      "0,3":{l:0,s:[],r:""},
+      "1,0":{l:4,s:["buon17","welchwl","kamen22","hicker21"],r:"Four studies, including a 215 to 255 nm wavelength sweep and a filtering experiment that removed the detectable signal."},
+      "1,1":{l:0,s:[],r:"Carcinogenic endpoints need a whole animal."},
+      "1,2":{l:2,s:["zam25"],r:"Reconstructed human corneal epithelium at 79 µm against a real human epithelium at 26 µm."},
+      "1,3":{l:0,s:[],r:""},
+      "2,0":{l:3,s:["buonskin","hicker21"],r:"Live human biopsies across ages, sexes and phototypes, plus an ex vivo full-thickness model held at tension. Damage minor and superficial, most in low-melanin skin."},
       "2,1":{l:0,s:[],r:"Pathology needs time in a living organism."},
-      "2,2":{l:2,s:["zam25"],r:"Ex vivo human corneas with real human tears. The single most relevant ocular study that exists, and it found 222 nm reaching epithelium and anterior stroma in thin epithelium, with CPD accumulating across repeat exposures and no significant repair."},
-      "2,3":{l:0,s:[],r:"Nothing functional."},
-      "3,0":{l:3,s:["narita18","buon17"],r:"Mouse skin, acute and high dose, no DNA damage or lesions."},
-      "3,1":{l:1,s:["buon17"],r:"Acute studies cannot see carcinogenesis; the 66-week work below covers it."},
+      "2,2":{l:2,s:["zam25"],r:"Ex vivo human corneas with real human tears. 222 nm reached epithelium and anterior stroma in thin epithelium, and CPD accumulated across repeat exposures."},
+      "2,3":{l:0,s:[],r:""},
+      "3,0":{l:3,s:["narita18","buon17"],r:"Mouse skin, acute and high dose, with no DNA damage or lesions."},
+      "3,1":{l:1,s:["buon17"],r:"Acute studies only. The 66-week work covers carcinogenesis."},
       "3,2":{l:3,s:["kaidzu21","kaidzu22"],r:"Rat and porcine cornea. Damage thresholds far above the exposure limit, penetration confined to the outermost epithelium, limbal stem cells spared."},
       "3,3":{l:1,s:["kaidzu21"],r:"Mostly histological rather than functional."},
-      "4,0":{l:2,s:["skh23"],r:"Daily dosing for 66 weeks at up to 400 mJ/cm², read out as pathology rather than molecular damage."},
-      "4,1":{l:3,s:["skh23"],r:"96 mice, both sexes, three dose levels, 5 days a week for 66 weeks. No increased skin cancer or abnormal growths. The best chronic evidence that exists for either technology in this map."},
-      "4,2":{l:0,s:[],r:"The chronic cohort was assessed functionally, not for corneal DNA damage."},
-      "4,3":{l:2,s:["arden25"],r:"Visual acuity, contrast sensitivity, intraocular pressure and corneal neovascularization in the 66-week cohort. No dose relationship, even above the human ocular limit."},
-      "5,0":{l:3,s:["hicker21","fukui20"],r:"Human skin in vivo at doses far above current limits, with minimal superficial CPD."},
-      "5,1":{l:0,s:[],r:"No human pathology endpoint, which is expected; nobody runs a carcinogenicity study in volunteers."},
-      "5,2":{l:0,s:[],r:"No human corneal DNA-damage measurement exists. Every CPD result in the eye column comes from rat, pig, or ex vivo and reconstructed tissue."},
-      "5,3":{l:2,s:["kousha24","sugi25"],r:"Two studies, eleven people between them. Kousha used validated dryness and surface-disease questionnaires in a simulated office; Sugihara exposed five subjects directly at up to 75 mJ/cm² with one eye filtered as a control and followed them for six months.",fl:["n = 11 across both"]},
-      "6,0":{l:0,s:[],r:"No chronic human skin study. The chronic evidence is entirely murine."},
-      "6,1":{l:0,s:[],r:"Nothing."},
-      "6,2":{l:0,s:[],r:"Nothing."},
-      "6,3":{l:1,s:["sugi25"],r:"Sugihara's six-month follow-up is long but the exposure was acute. A year-long hospital observation and a group of six ophthalmologists working under lamps for over a year are reported secondhand in review sections, not as studies.",fl:["follow-up, not chronic exposure"]}
+      "4,0":{l:2,s:["skh23"],r:"Daily dosing for 66 weeks at up to 400 mJ/cm², read out as pathology."},
+      "4,1":{l:3,s:["skh23"],r:"96 mice, both sexes, three dose levels, 5 days a week for 66 weeks. No increased skin cancer or abnormal growths."},
+      "4,2":{l:0,s:[],r:"The chronic cohort was assessed functionally."},
+      "4,3":{l:2,s:["arden25"],r:"Visual acuity, contrast sensitivity, intraocular pressure and corneal neovascularization in the 66-week cohort, with no dose relationship."},
+      "5,0":{l:3,s:["hicker21","fukui20"],r:"Human skin in vivo at doses above current limits, with minimal superficial CPD."},
+      "5,1":{l:0,s:[],r:"Carcinogenicity endpoints are not run in volunteers."},
+      "5,2":{l:0,s:[],r:"Every CPD result in the eye column comes from rat, pig, or ex vivo and reconstructed tissue."},
+      "5,3":{l:2,s:["kousha24","sugi25"],r:"Two studies, eleven people between them. Validated dryness and surface-disease questionnaires in a simulated office, and five subjects exposed directly at up to 75 mJ/cm² with one eye filtered as a control.",fl:["n = 11 across both"]},
+      "6,0":{l:0,s:[],r:"The chronic evidence is murine."},
+      "6,1":{l:0,s:[],r:""},
+      "6,2":{l:0,s:[],r:""},
+      "6,3":{l:1,s:["sugi25"],r:"A six-month follow-up after an acute exposure. A year-long hospital observation and a group of ophthalmologists working under lamps are described in review sections rather than as studies.",fl:["follow-up, not chronic exposure"]}
     }},
 
   "g-uv-byp":{detail:"d-uv-byp",rows:["Ozone","OH radical / oxidized VOC","Secondary organic aerosol"],
     cols:["Box model","Lab chamber","Real room, unoccupied","Real room, occupied"],
     cells:{
-      "0,0":{l:3,s:["peng23b","carter25"],r:"Modeling is where the concern originated, and it points the same way twice: the ozone problem is a ventilation problem."},
-      "0,1":{l:4,s:["peng23a","barber23","jenks"],r:"Direct chamber measurement overturned an earlier review that had called KrCl ozone generation minimal."},
-      "0,2":{l:2,s:["office24"],r:"One lamp at manufacturer settings moved nothing. Four lamps, deliberately above regulatory recommendations, added 5 to 10 ppb.",fl:["preprint"]},
-      "0,3":{l:2,s:["occupied25","buon24"],r:"Median increase of 1.44 ppb in a ventilated occupied office, and no measurable change in the animal-facility room. The gap between chamber alarm and occupied-room reality is the whole story in this row."},
+      "0,0":{l:3,s:["peng23b","carter25"],r:"Two box models, both tracking ozone against ventilation."},
+      "0,1":{l:4,s:["peng23a","barber23","jenks"],r:"Chemical actinometry and chamber measurement, against an earlier review that had called KrCl ozone generation minimal."},
+      "0,2":{l:2,s:["office24"],r:"One lamp at manufacturer settings moved nothing. Four lamps, above regulatory recommendations, added 5 to 10 ppb.",fl:["preprint"]},
+      "0,3":{l:2,s:["occupied25","buon24"],r:"Median increase of 1.44 ppb in a ventilated occupied office, and no measurable change in the animal-facility room."},
       "1,0":{l:3,s:["peng23b","carter25"],r:"Hydroxyl radical production and downstream VOC oxidation, modeled across ventilation levels."},
-      "1,1":{l:3,s:["barber23","jenks"],r:"Measured directly, including with limonene as a realistic indoor terpene."},
-      "1,2":{l:0,s:[],r:"Nothing."},
-      "1,3":{l:1,s:["occupied25"],r:"Time-integrated VOC samples before and after, with nothing discernible. Integrated sampling is a coarse instrument for this."},
-      "2,0":{l:3,s:["peng23b","carter25"],r:"Modeled SOA of the order of 0.1 to 1 µg/m³ in the cases studied, much of it from ozonolysis that happens with or without the lamp."},
+      "1,1":{l:3,s:["barber23","jenks"],r:"Measured directly, including with limonene as an indoor terpene."},
+      "1,2":{l:0,s:[],r:""},
+      "1,3":{l:1,s:["occupied25"],r:"Time-integrated VOC samples before and after, with nothing discernible."},
+      "2,0":{l:3,s:["peng23b","carter25"],r:"Modeled SOA of the order of 0.1 to 1 µg/m³, much of it from ozonolysis that happens with or without the lamp."},
       "2,1":{l:3,s:["barber23","jenks"],r:"Measured under varied VOC load, ventilation, intensity and humidity."},
-      "2,2":{l:1,s:["office24"],r:"Minor particulate increases only at the overdriven four-lamp condition.",fl:["preprint"]},
+      "2,2":{l:1,s:["office24"],r:"Minor particulate increases at the four-lamp condition only.",fl:["preprint"]},
       "2,3":{l:2,s:["occupied25"],r:"No discernible secondary aerosol in a ventilated occupied office, with ultrafine particle monitoring."}
     }},
 
   "g-gl-eff":{detail:"d-gl-eff",rows:["Enveloped virus","Non-enveloped virus","Vegetative bacteria","Bacterial spores","Fungi"],
     cols:["Suspension / surface","Chamber aerosol","Simulated room","Occupied real setting","Human infection outcome"],
     cells:{
-      "0,0":{l:3,s:["styles23"],r:"Modern, careful, and quantitative. PG cut influenza A infectivity roughly 10,000-fold in 5 minutes at physiological temperature."},
-      "0,1":{l:3,s:["styles23","rob41","rob43","rose47","donskey26"],r:"Spans eighty years. Styles is the modern anchor; Rosebury's mouse-lesion readout against psittacosis and meningopneumonitis clouds is the kind of endpoint nobody runs now.",fl:["three studies predate 1950"]},
-      "0,2":{l:2,s:["donskey26"],r:"Phi6 in a simulated patient room at 8 air changes per hour, with both an airborne and a settle-disk readout."},
-      "0,3":{l:1,s:["loosli47"],r:"The infants' ward work is the only occupied-setting evidence and it is from the 1940s.",fl:["pre-modern methods"]},
-      "0,4":{l:1,s:["loosli47"],r:"Three winters in a pediatric hospital, roughly 96% fewer colds in treated wards. An extraordinary effect size measured with the study design of 1944, never replicated, and the single most load-bearing citation in the modern case for glycol.",fl:["unreplicated, 1941–44"]},
-      "1,0":{l:2,s:["ratliff23"],r:"MS2 on stainless steel coupons in the EPA chamber work."},
-      "1,1":{l:3,s:["desai23","ratliff23"],r:"Two independent evaluations of the same commercial TEG product, reaching 2 to 3 log and up to 99.9% at 90 minutes. Ratliff showed the number moves depending on whether the aerosol or the glycol enters the chamber first.",fl:["one product; one study manufacturer-funded"]},
-      "1,2":{l:2,s:["donskey26","frontiers26"],r:"MS2 fell in air but not on settle disks, while Phi6 fell in both. Non-enveloped viruses are consistently the weaker case."},
-      "1,3":{l:0,s:[],r:"Nothing."},
-      "1,4":{l:0,s:[],r:"Nothing."},
-      "2,0":{l:2,s:["rob42","donskey26"],r:"The 1942 in vitro work plus modern surface data on MRSA, VRE, K. pneumoniae and A. baumannii, where 16 to 48 hours of TEG vapor bought only about half a log on most species.",fl:["modern surface effect is small"]},
-      "2,1":{l:3,s:["rob42","puck43","rob43"],r:"The historical core: pneumococci, streptococci, staphylococci and H. influenzae, with the humidity and temperature dependence worked out in the 1943 follow-up.",fl:["pre-modern methods"]},
-      "2,2":{l:1,s:["frontiers26"],r:"The review describes consistent reductions in airborne bacterial viability under experimental conditions, with the modern simulated-room work focused on phages."},
+      "0,0":{l:3,s:["styles23"],r:"PG cut influenza A infectivity roughly 10,000-fold in 5 minutes at physiological temperature."},
+      "0,1":{l:3,s:["styles23","rob41","rob43","rose47","donskey26"],r:"Spans eighty years, from the 1940s mouse and cloud-chamber work through to 2023 and 2026.",fl:["three studies predate 1950"]},
+      "0,2":{l:2,s:["donskey26"],r:"Phi6 in a simulated patient room at 8 air changes per hour, with an airborne and a settle-disk readout."},
+      "0,3":{l:1,s:["loosli47"],r:"Pediatric wards in the 1940s.",fl:["pre-modern methods"]},
+      "0,4":{l:1,s:["loosli47"],r:"Three winters in a pediatric hospital, roughly 96% fewer colds in treated wards. Measured with the study design of its era and never replicated.",fl:["unreplicated, 1941–44"]},
+      "1,0":{l:2,s:["ratliff23"],r:"MS2 on stainless steel coupons, in the EPA chamber work."},
+      "1,1":{l:3,s:["desai23","ratliff23"],r:"Two evaluations of the same commercial TEG product, reaching 2 to 3 log and up to 99.9% at 90 minutes. The number moves with the order the chamber is charged.",fl:["one product; one study manufacturer-funded"]},
+      "1,2":{l:2,s:["donskey26","frontiers26"],r:"MS2 fell in air and not on settle disks, while Phi6 fell in both."},
+      "1,3":{l:0,s:[],r:""},
+      "1,4":{l:0,s:[],r:""},
+      "2,0":{l:2,s:["rob42","donskey26"],r:"The 1942 in vitro work, plus modern surface data on MRSA, VRE, K. pneumoniae and A. baumannii, where 16 to 48 hours of TEG vapor gave about half a log on most species.",fl:["modern surface effect is small"]},
+      "2,1":{l:3,s:["rob42","puck43","rob43"],r:"Pneumococci, streptococci, staphylococci and H. influenzae, with the humidity and temperature dependence worked out in 1943.",fl:["pre-modern methods"]},
+      "2,2":{l:1,s:["frontiers26"],r:"Described in the review as consistent reductions under experimental conditions. The modern simulated-room work used phages."},
       "2,3":{l:2,s:["hamb45","loosli47"],r:"Hospital wards and army barracks, measuring airborne bacterial burden in occupied space.",fl:["pre-modern methods"]},
-      "2,4":{l:1,s:["loosli47"],r:"Same 1940s ward study, with bacterial respiratory outcomes bundled into the reported reductions.",fl:["pre-modern methods"]},
-      "3,0":{l:0,s:[],r:"No glycol data on bacterial spores at all, in any setting, in this scan. Spores are the resistance benchmark; for glycol the benchmark has never been run."},
-      "3,1":{l:0,s:[],r:"Nothing.",fill:1},
-      "3,2":{l:0,s:[],r:"Nothing."},"3,3":{l:0,s:[],r:"Nothing."},"3,4":{l:0,s:[],r:"Nothing."},
-      "4,0":{l:1,s:["donskey26"],r:"Candidozyma auris on steel, reduced by more than 1 log10 after 16 to 48 hours of TEG vapor. One organism, one surface, long exposure."},
-      "4,1":{l:0,s:[],r:"The Frontiers review flags fungi as the thinnest class, and this scan found no airborne fungal challenge."},
-      "4,2":{l:0,s:[],r:"Nothing."},"4,3":{l:0,s:[],r:"Nothing."},"4,4":{l:0,s:[],r:"Nothing."}
+      "2,4":{l:1,s:["loosli47"],r:"The 1940s ward study, with bacterial respiratory outcomes bundled into the reported reductions.",fl:["pre-modern methods"]},
+      "3,0":{l:0,s:[],r:""},
+      "3,1":{l:0,s:[],r:"",fill:1},
+      "3,2":{l:0,s:[],r:""},"3,3":{l:0,s:[],r:""},"3,4":{l:0,s:[],r:""},
+      "4,0":{l:1,s:["donskey26"],r:"Candidozyma auris on steel, reduced by more than 1 log10 after 16 to 48 hours of TEG vapor."},
+      "4,1":{l:0,s:[],r:"The review flags fungi as the thinnest class."},
+      "4,2":{l:0,s:[],r:""},"4,3":{l:0,s:[],r:""},"4,4":{l:0,s:[],r:""}
     }},
 
   "g-gl-saf":{detail:"d-gl-saf",rows:["Human airway cells, ALI","3D reconstructed airway","Animal, acute","Animal, repeat-dose","Animal, chronic","Human volunteer","Human, in-situ"],
     cols:["Cytotoxicity","Inflammation","Barrier function","Systemic / organ"],
     cells:{
-      "0,0":{l:1,s:["escobar20","pgvg26"],r:"Every air-liquid-interface result on human airway cells comes from e-cigarette research, at vaping wattages and deposited doses orders of magnitude above an air-disinfection concentration. The methods transfer; the conclusions do not.",fl:["wrong exposure regime"],fill:1},
-      "0,1":{l:1,s:["escobar20"],r:"IL-6 and IL-8 rose after vaped PG exposure. At disinfection concentrations, unknown.",fl:["wrong exposure regime"],fill:1},
-      "0,2":{l:1,s:["jacob19","pgvg26"],r:"TEER fell, permeability rose, glucose uptake dropped, and mucociliary function was assessed over seven days. A ready-made endpoint panel waiting for someone to run it at the right dose.",fl:["wrong exposure regime"],fill:1},
+      "0,0":{l:1,s:["escobar20","pgvg26"],r:"Air-liquid-interface results on human airway cells, from e-cigarette research at vaping doses.",fl:["e-cigarette doses"],fill:1},
+      "0,1":{l:1,s:["escobar20"],r:"IL-6 and IL-8 rose after vaped PG exposure.",fl:["e-cigarette doses"],fill:1},
+      "0,2":{l:1,s:["jacob19","pgvg26"],r:"TEER fell, permeability rose, glucose uptake dropped, and mucociliary function was assessed over seven days.",fl:["e-cigarette doses"],fill:1},
       "0,3":{l:0,s:[],r:"Not measurable in cell culture."},
-      "1,0":{l:0,s:[],r:"No reconstructed human airway epithelium model has been exposed to glycol vapor at disinfection concentrations. The 3D tissue that would answer the question is commercially available and nobody has used it for this."},
-      "1,1":{l:0,s:[],r:"Nothing."},"1,2":{l:0,s:[],r:"Nothing."},"1,3":{l:0,s:[],r:"Nothing."},
+      "1,0":{l:0,s:[],r:"The 3D tissue is commercially available."},
+      "1,1":{l:0,s:[],r:""},"1,2":{l:0,s:[],r:""},"1,3":{l:0,s:[],r:""},
       "2,0":{l:1,s:["epateg"],r:"Acute inhalation LC50 above 5.2 mg/L, Toxicity Category IV."},
-      "2,1":{l:0,s:[],r:"Acute studies did not carry inflammatory endpoints."},
-      "2,2":{l:2,s:["ball06"],r:"Sensory irritation RD50 of 5140 mg/m³ in mice, measured as breathing-rate depression. The clearest dose anchor in the glycol safety file."},
+      "2,1":{l:0,s:[],r:"The acute work carried no inflammatory endpoints."},
+      "2,2":{l:2,s:["ball06"],r:"Sensory irritation RD50 of 5140 mg/m³ in mice, measured as breathing-rate depression."},
       "2,3":{l:3,s:["ball06","epateg"],r:"Rats to 6730 mg/m³ for four hours, with signs limited to irritancy."},
       "3,0":{l:2,s:["ball06"],r:"Nine-day exposures, whole-body and nose-only."},
-      "3,1":{l:0,s:[],r:"No inflammatory or cytokine endpoints in the repeat-dose work."},
-      "3,2":{l:1,s:["bactmix"],r:"The BAC mixture study showed TEG shifting particle size and so moving the deposition site. That mechanism applies to glycol alone and nobody has characterized it for a standalone disinfection aerosol."},
-      "3,3":{l:3,s:["ball06"],r:"Nose-only at 102, 517 and 1036 mg/m³ produced no clinical signs and no hepatorenal change. Whole-body at higher concentrations could not establish a no-effect level, which the authors attribute partly to the exposure route."},
+      "3,1":{l:0,s:[],r:"The repeat-dose work carried no cytokine endpoints."},
+      "3,2":{l:1,s:["bactmix"],r:"The BAC mixture study showed TEG shifting particle size and moving the deposition site. No equivalent characterization found for glycol alone."},
+      "3,3":{l:3,s:["ball06"],r:"Nose-only at 102, 517 and 1036 mg/m³ produced no clinical signs and no hepatorenal change. Whole-body at higher concentrations could not establish a no-effect level."},
       "4,0":{l:1,s:["monkey"],r:"Primate exposure at roughly 1 ppm for up to 13 months, with no adverse reaction. Decades old and small."},
-      "4,1":{l:0,s:[],r:"Nothing."},"4,2":{l:0,s:[],r:"Nothing."},
-      "4,3":{l:2,s:["monkey","epateg"],r:"The chronic case rests on that primate study and on EPA's judgement of low inhalation toxicity, not on a modern chronic inhalation program."},
-      "5,0":{l:0,s:[],r:"No controlled human exposure study to glycol vapor at disinfection concentrations was found, at any endpoint."},
-      "5,1":{l:0,s:[],r:"Nothing."},"5,2":{l:0,s:[],r:"Nothing."},"5,3":{l:0,s:[],r:"Nothing."},
-      "6,0":{l:1,s:["theatre"],r:"Theatrical fog has exposed performers to PG and TEG for decades. The surveys that exist have no controls and were criticized on methodology by the toxicologist who reviewed them. Real exposure, no usable data.",fl:["uncontrolled surveys"]},
-      "6,1":{l:0,s:[],r:"Nothing."},"6,2":{l:0,s:[],r:"Nothing."},"6,3":{l:0,s:[],r:"Nothing."}
+      "4,1":{l:0,s:[],r:""},"4,2":{l:0,s:[],r:""},
+      "4,3":{l:2,s:["monkey","epateg"],r:"The chronic case rests on that primate study and on EPA's judgement of low inhalation toxicity."},
+      "5,0":{l:0,s:[],r:""},
+      "5,1":{l:0,s:[],r:""},"5,2":{l:0,s:[],r:""},"5,3":{l:0,s:[],r:""},
+      "6,0":{l:1,s:["theatre"],r:"Theatrical fog has exposed performers to PG and TEG for decades. The surveys that exist have no controls and were criticized on methodology by the reviewer linked here.",fl:["uncontrolled surveys"]},
+      "6,1":{l:0,s:[],r:""},"6,2":{l:0,s:[],r:""},"6,3":{l:0,s:[],r:""}
     }}
 };
 
@@ -513,7 +513,7 @@ function select(gid,key,btn){
   const panel=document.getElementById(g.detail);
   let h='<div class="detail-head"><h4>'+esc(g.rows[ri])+' <span style="color:var(--faint);font-weight:400">×</span> '+esc(g.cols[ci])+'</h4>'+
         '<span class="lvtag">'+esc(LVNAME[d.l])+'</span></div>';
-  h+='<p class="detail-read">'+esc(d.r)+'</p>';
+  if(d.r) h+='<p class="detail-read">'+esc(d.r)+'</p>';
   const flags=[];
   if(d.fill) flags.push('<a class="flag fill" href="https://benchpressed.substack.com/p/building-for-biosecurity-two-tools" target="_blank" rel="noopener">Protocol designed, not yet tried →</a>');
   (d.fl||[]).forEach(f=>flags.push('<span class="flag">'+esc(f)+'</span>'));
@@ -526,7 +526,7 @@ function select(gid,key,btn){
              '<div class="st-find">'+esc(s.f)+'</div></li>';
     }).join("")+'</ul>';
   } else {
-    h+='<p class="empty-note">No study found in this scan.</p>';
+    h+='<p class="empty-note">My search found nothing for this cell. If you know of a study that fills it, tell me and I will update it.</p>';
   }
   panel.innerHTML=h;
 }
