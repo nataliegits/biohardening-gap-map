@@ -336,7 +336,7 @@ const S = {
 };
 
 const GRIDS = {
-  "g-uv-eff":{detail:"d-uv-eff",rows:["Enveloped virus","Non-enveloped virus","Vegetative bacteria","Bacterial spores","Fungi","Mycobacteria"],
+  "g-uv-eff":{detail:"d-uv-eff",sect:"Far-UVC efficacy",rows:["Enveloped virus","Non-enveloped virus","Vegetative bacteria","Bacterial spores","Fungi","Mycobacteria"],
     cols:["Suspension / surface","Benchtop aerosol","Room-scale chamber","Occupied real room","Human infection outcome"],
     cells:{
       "0,0":{l:3,s:["kita21","narita20","taylor20"],r:"Dried-droplet and plate work on SARS-CoV-2, influenza A and a herpesvirus. Kitagawa's RNA copy number did not fall after irradiation, so a PCR readout would have shown no effect."},
@@ -355,7 +355,7 @@ const GRIDS = {
       "2,3":{l:2,s:["kousha24"],r:"One environmental count in a simulated office, 52% fewer bacteria and fungi. A room-air measurement rather than a controlled challenge."},
       "2,4":{l:0,s:["privii","dk26"],r:"No result yet. The Danish trial measures hospital-treated infections and antibiotic prescriptions.",fl:["trials ongoing"]},
       "3,0":{l:4,s:["taylor20","narita20"],r:"Spores of B. subtilis, B. cereus, B. thuringiensis and C. difficile, killed at lower fluence than 254 nm."},
-      "3,1":{l:0,s:[],r:"",fill:1},
+      "3,1":{l:0,s:[],r:"",fill:1,next:"Test bacterial spores as benchtop aerosols."},
       "3,2":{l:0,s:[],r:""},
       "3,3":{l:0,s:[],r:""},
       "3,4":{l:0,s:[],r:""},
@@ -368,12 +368,12 @@ const GRIDS = {
       "5,1":{l:0,s:[],r:""},"5,2":{l:0,s:[],r:""},"5,3":{l:0,s:[],r:""},"5,4":{l:0,s:[],r:""}
     }},
 
-  "g-uv-saf":{detail:"d-uv-saf",rows:["2D cell culture","3D reconstructed tissue","Ex vivo human tissue","Animal, acute","Animal, chronic (66 wk)","Human volunteer, acute","Human, chronic or in-situ"],
+  "g-uv-saf":{detail:"d-uv-saf",sect:"Far-UVC safety",rows:["2D cell culture","3D reconstructed tissue","Ex vivo human tissue","Animal, acute","Animal, chronic (66 wk)","Human volunteer, acute","Human, chronic or in-situ"],
     cols:["Skin — DNA damage","Skin — pathology","Eye — DNA damage","Eye — function"],
     cells:{
       "0,0":{l:1,s:[],r:"Little monolayer keratinocyte work found. The skin safety argument rests on the stratum corneum, which a monolayer does not have."},
       "0,1":{l:0,s:[],r:"Not applicable in a monolayer."},
-      "0,2":{l:0,s:[],r:"",fill:1},
+      "0,2":{l:0,s:[],r:"",fill:1,next:"Compare 2D corneal monolayers against a 3D model at matched dose."},
       "0,3":{l:0,s:[],r:""},
       "1,0":{l:4,s:["buon17","welchwl","kamen22","hicker21"],r:"Four studies, including a 215 to 255 nm wavelength sweep and a filtering experiment that removed the detectable signal."},
       "1,1":{l:0,s:[],r:"Carcinogenic endpoints need a whole animal."},
@@ -401,7 +401,7 @@ const GRIDS = {
       "6,3":{l:1,s:["sugi25"],r:"A six-month follow-up after an acute exposure. A year-long hospital observation and a group of ophthalmologists working under lamps are described in review sections rather than as studies.",fl:["follow-up, not chronic exposure"]}
     }},
 
-  "g-uv-byp":{detail:"d-uv-byp",rows:["Ozone","OH radical / oxidized VOC","Secondary organic aerosol"],
+  "g-uv-byp":{detail:"d-uv-byp",sect:"Far-UVC byproduct chemistry",rows:["Ozone","OH radical / oxidized VOC","Secondary organic aerosol"],
     cols:["Box model","Lab chamber","Real room, unoccupied","Real room, occupied"],
     cells:{
       "0,0":{l:3,s:["peng23b","carter25"],r:"Two box models, both tracking ozone against ventilation."},
@@ -418,7 +418,7 @@ const GRIDS = {
       "2,3":{l:2,s:["occupied25"],r:"No discernible secondary aerosol in a ventilated occupied office, with ultrafine particle monitoring."}
     }},
 
-  "g-gl-eff":{detail:"d-gl-eff",rows:["Enveloped virus","Non-enveloped virus","Vegetative bacteria","Bacterial spores","Fungi"],
+  "g-gl-eff":{detail:"d-gl-eff",sect:"Glycol vapor efficacy",rows:["Enveloped virus","Non-enveloped virus","Vegetative bacteria","Bacterial spores","Fungi"],
     cols:["Suspension / surface","Chamber aerosol","Simulated room","Occupied real setting","Human infection outcome"],
     cells:{
       "0,0":{l:3,s:["styles23"],r:"PG cut influenza A infectivity roughly 10,000-fold in 5 minutes at physiological temperature."},
@@ -437,19 +437,19 @@ const GRIDS = {
       "2,3":{l:2,s:["hamb45","loosli47"],r:"Hospital wards and army barracks, measuring airborne bacterial burden in occupied space.",fl:["pre-modern methods"]},
       "2,4":{l:1,s:["loosli47"],r:"The 1940s ward study, with bacterial respiratory outcomes bundled into the reported reductions.",fl:["pre-modern methods"]},
       "3,0":{l:0,s:[],r:""},
-      "3,1":{l:0,s:[],r:"",fill:1},
+      "3,1":{l:0,s:[],r:"",fill:1,next:"Test bacterial spores as chamber aerosols."},
       "3,2":{l:0,s:[],r:""},"3,3":{l:0,s:[],r:""},"3,4":{l:0,s:[],r:""},
       "4,0":{l:1,s:["donskey26"],r:"Candidozyma auris on steel, reduced by more than 1 log10 after 16 to 48 hours of TEG vapor."},
       "4,1":{l:0,s:[],r:"The review flags fungi as the thinnest class."},
       "4,2":{l:0,s:[],r:""},"4,3":{l:0,s:[],r:""},"4,4":{l:0,s:[],r:""}
     }},
 
-  "g-gl-saf":{detail:"d-gl-saf",rows:["Human airway cells, ALI","3D reconstructed airway","Animal, acute","Animal, repeat-dose","Animal, chronic","Human volunteer","Human, in-situ"],
+  "g-gl-saf":{detail:"d-gl-saf",sect:"Glycol vapor safety",rows:["Human airway cells, ALI","3D reconstructed airway","Animal, acute","Animal, repeat-dose","Animal, chronic","Human volunteer","Human, in-situ"],
     cols:["Cytotoxicity","Inflammation","Barrier function","Systemic / organ"],
     cells:{
-      "0,0":{l:1,s:["escobar20","pgvg26"],r:"Air-liquid-interface results on human airway cells, from e-cigarette research at vaping doses.",fl:["e-cigarette doses"],fill:1},
-      "0,1":{l:1,s:["escobar20"],r:"IL-6 and IL-8 rose after vaped PG exposure.",fl:["e-cigarette doses"],fill:1},
-      "0,2":{l:1,s:["jacob19","pgvg26"],r:"TEER fell, permeability rose, glucose uptake dropped, and mucociliary function was assessed over seven days.",fl:["e-cigarette doses"],fill:1},
+      "0,0":{l:1,s:["escobar20","pgvg26"],r:"Air-liquid-interface results on human airway cells, from e-cigarette research at vaping doses.",fl:["e-cigarette doses"],fill:1,next:"Measure cytotoxicity in human airway cells at disinfection concentrations."},
+      "0,1":{l:1,s:["escobar20"],r:"IL-6 and IL-8 rose after vaped PG exposure.",fl:["e-cigarette doses"],fill:1,next:"Measure inflammatory markers in human airway cells at disinfection concentrations."},
+      "0,2":{l:1,s:["jacob19","pgvg26"],r:"TEER fell, permeability rose, glucose uptake dropped, and mucociliary function was assessed over seven days.",fl:["e-cigarette doses"],fill:1,next:"Measure barrier function in human airway cells at disinfection concentrations."},
       "0,3":{l:0,s:[],r:"Not measurable in cell culture."},
       "1,0":{l:0,s:[],r:"The 3D tissue is commercially available."},
       "1,1":{l:0,s:[],r:""},"1,2":{l:0,s:[],r:""},"1,3":{l:0,s:[],r:""},
@@ -511,11 +511,20 @@ function select(gid,key,btn){
   const [ri,ci]=key.split(",").map(Number);
   const d=g.cells[key]||{l:0,s:[],r:"No entry."};
   const panel=document.getElementById(g.detail);
-  let h='<div class="detail-head"><h4>'+esc(g.rows[ri])+' <span style="color:var(--faint);font-weight:400">×</span> '+esc(g.cols[ci])+'</h4>'+
-        '<span class="lvtag">'+esc(LVNAME[d.l])+'</span></div>';
-  if(d.r) h+='<p class="detail-read">'+esc(d.r)+'</p>';
+  const coord=esc(g.rows[ri])+' <span style="color:var(--faint);font-weight:400">×</span> '+esc(g.cols[ci]);
+  let h;
+  if(d.next){
+    h='<div class="detail-head"><h4>'+esc(g.sect)+': potential next step</h4>'+
+      '<span class="lvtag">'+coord+' · '+esc(LVNAME[d.l])+'</span></div>'+
+      '<p class="detail-read"><strong>'+esc(d.next)+'</strong></p>';
+    if(d.r) h+='<p class="detail-read">'+esc(d.r)+'</p>';
+  } else {
+    h='<div class="detail-head"><h4>'+coord+'</h4>'+
+      '<span class="lvtag">'+esc(LVNAME[d.l])+'</span></div>';
+    if(d.r) h+='<p class="detail-read">'+esc(d.r)+'</p>';
+  }
   const flags=[];
-  if(d.fill) flags.push('<a class="flag fill" href="https://benchpressed.substack.com/p/building-for-biosecurity-two-tools" target="_blank" rel="noopener">Protocol designed, not yet tried →</a>');
+  if(d.fill) flags.push('<a class="flag fill" href="https://benchpressed.substack.com/p/building-for-biosecurity-two-tools" target="_blank" rel="noopener">Idea for an experimental protocol linked here →</a>');
   (d.fl||[]).forEach(f=>flags.push('<span class="flag">'+esc(f)+'</span>'));
   if(flags.length) h+='<div class="flags">'+flags.join("")+'</div>';
   if(d.s && d.s.length){
@@ -525,16 +534,15 @@ function select(gid,key,btn){
              '<div class="st-meta">'+esc(s.j)+'</div>'+
              '<div class="st-find">'+esc(s.f)+'</div></li>';
     }).join("")+'</ul>';
-  } else {
-    h+='<p class="empty-note">My search found nothing for this cell. If you know of a study that fills it, tell me and I will update it.</p>';
   }
   panel.innerHTML=h;
+  panel.hidden=false;
 }
 
 Object.keys(GRIDS).forEach(build);
 select("g-uv-eff","3,1",document.querySelector('button[data-grid="g-uv-eff"][data-key="3,1"]'));
 select("g-uv-saf","0,2",document.querySelector('button[data-grid="g-uv-saf"][data-key="0,2"]'));
-select("g-uv-byp","0,3",document.querySelector('button[data-grid="g-uv-byp"][data-key="0,3"]'));
+document.getElementById("d-uv-byp").hidden=true;
 select("g-gl-eff","0,4",document.querySelector('button[data-grid="g-gl-eff"][data-key="0,4"]'));
 select("g-gl-saf","0,2",document.querySelector('button[data-grid="g-gl-saf"][data-key="0,2"]'));
 
